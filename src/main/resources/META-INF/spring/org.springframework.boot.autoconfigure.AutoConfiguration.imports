@@ -1,0 +1,2 @@
+io.github.restvalidation.config.ValidationAutoConfiguration
+io.github.restvalidation.config.ValidationOpenApiConfiguration
