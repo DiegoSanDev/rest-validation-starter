@@ -118,6 +118,76 @@ public class GlobalCustomizer implements ErrorResponseCustomizer {
 
 ---
 
+## 📄 Exemplos de Respostas de Erro
+
+A seguir, alguns exemplos de como as respostas de erro são padronizadas pelo starter.
+
+### 1. Erro de Validação (HTTP 422 - Unprocessable Entity)
+
+Quando um ou mais campos de um DTO falham nas regras de validação.
+
+```json
+{
+  "timestamp": "2023-10-27T10:30:00.123456789Z",
+  "message": "Erro de validação detectado.",
+  "errors": [
+    {
+      "field": "name",
+      "message": "Nome obrigatório"
+    },
+    {
+      "field": "email",
+      "message": "E-mail inválido"
+    }
+  ]
+}
+```
+
+### 2. Erro de Conversão de Tipo (HTTP 400 - Bad Request)
+
+Ocorre quando um parâmetro da requisição não pode ser convertido para o tipo esperado (ex: string para número).
+
+```json
+{
+  "timestamp": "2023-10-27T10:35:00.987654321Z",
+  "message": "O parâmetro 'age' recebeu um valor inválido: 'abc'.",
+  "errors": []
+}
+```
+
+### 3. Erro com Metadados Dinâmicos (HTTP 422 - Unprocessable Entity)
+
+Exemplo de uma resposta de validação que inclui metadados adicionados via `ValidationContext`.
+
+```json
+{
+  "timestamp": "2023-10-27T10:40:00.555444333Z",
+  "message": "Erro de validação detectado.",
+  "order_ref": "ORD-2023-001",
+  "user_tier": "GOLD",
+  "errors": [
+    {
+      "field": "productCode",
+      "message": "Código do produto inválido"
+    }
+  ]
+}
+```
+
+### 4. Erro Interno do Servidor (HTTP 500 - Internal Server Error)
+
+Para erros inesperados no servidor. A mensagem é genérica por segurança.
+
+```json
+{
+  "timestamp": "2023-10-27T10:45:00.111222333Z",
+  "message": "Ocorreu um erro interno crítico.",
+  "errors": []
+}
+```
+
+---
+
 ## ⚙️ Configuração via application.yml
 
 Você pode sobrescrever as mensagens padrão sem precisar de código:
