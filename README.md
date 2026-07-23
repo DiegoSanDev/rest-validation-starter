@@ -43,7 +43,12 @@ O projeto é dividido em camadas de responsabilidade bem definidas para facilita
 - **`DefaultViolationMapper`**: Implementação robusta que navega na árvore de nós (`Path.Node`) para extrair apenas o nome do campo folha, evitando nomes longos como `save.userDTO.email`.
 
 ### 3. Tratamento de Exceções (`.handler`)
-- **`GlobalValidationHandler`**: Advice central que intercepta 5 tipos principais de exceções.
+- **`GlobalValidationHandler`**: Advice central que intercepta as seguintes exceções comuns do Spring/Jakarta Validation:
+    - `MethodArgumentNotValidException` (para `@Valid` em `@RequestBody`)
+    - `ConstraintViolationException` (para `@Validated` em parâmetros de método ou beans)
+    - `HttpMessageNotReadableException` (para problemas de desserialização do JSON)
+    - `MethodArgumentTypeMismatchException` (para falha na conversão de tipo de parâmetros de URL/query)
+    - `MissingServletRequestParameterException` (para parâmetros de requisição obrigatórios ausentes)
 - **`ValidationContext`**: Bridge estática thread-safe para injetar dados extras na resposta a partir de qualquer camada (Service, Controller).
 - **`ErrorResponseCustomizer`**: Ponto de extensão via Bean para customização global e estática.
 
