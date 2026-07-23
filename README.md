@@ -1,5 +1,8 @@
 # REST Validation Starter
 
+**Desenvolvido via Vibecoding com Gemini**
+*Vibecoding é um método de desenvolvimento de software onde, em vez de programar linha por linha, você orienta uma inteligência artificial a criar, refinar e depurar aplicativos por meio de instruções em linguagem natural.*
+
 [![Java Version](https://img.shields.io/badge/Java-21-blue.svg)](https://www.oracle.com/java/technologies/javase/jdk21-archive-downloads.html)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3+-brightgreen.svg)](https://spring.io/projects/spring-boot)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
