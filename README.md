@@ -226,7 +226,7 @@ A biblioteca foi desenhada para facilitar a vida da equipe de SRE/DevOps:
 
 ---
 
-## 🛠 Instalação
+## 🛠 Instalação (Ainda não disponível em repositório Maven remoto)
 
 ```xml
 <dependency>
@@ -235,6 +235,8 @@ A biblioteca foi desenhada para facilitar a vida da equipe de SRE/DevOps:
     <version>1.0.0</version>
 </dependency>
 ```
+
+**Para testar localmente:** Para utilizar este starter em outros projetos, você precisará executar `mvn clean install` no diretório raiz deste projeto. Isso instalará o artefato no seu repositório Maven local.
 
 ---
 
