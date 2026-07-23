@@ -52,7 +52,7 @@ Você pode adicionar informações extras, como um ID de pedido, sem complicar s
 **Sua Contribuição é Bem-Vinda!**
 Acredito que as melhores soluções nascem da colaboração. Convido você a explorar o projeto no GitHub. Faça um *fork*, traga novas ideias, sugira melhorias, ajuste eventuais bugs ou simplesmente use e dê seu feedback. Sua contribuição é muito valiosa!
 
-Para os detalhes técnicos, como instalar e usar, confira o `README.md` completo no repositório:
+Para os detalhes técnicos, como instalar, usar e configurar a internacionalização (i18n), confira o `README.md` completo no repositório:
 [Link para o seu repositório GitHub]
 
 Vamos juntos construir APIs mais robustas e amigáveis!

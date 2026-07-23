@@ -210,11 +210,66 @@ rest-validation:
 ```
 
 ### Internacionalização (i18n)
-O starter busca automaticamente traduções no seu `messages.properties` usando o `Locale` da requisição:
-- `rest-validation.validation-failed`
-- `rest-validation.type-mismatch`
-- `rest-validation.not-found`
-- `rest-validation.internal-error`
+
+O starter suporta internacionalização das mensagens de erro utilizando os arquivos `messages.properties` do Spring. Ele busca automaticamente as traduções com base no `Locale` da requisição (geralmente definido pelo cabeçalho `Accept-Language`).
+
+**Como configurar:**
+
+1.  **Crie os arquivos `messages.properties`:**
+    Coloque-os na pasta `src/main/resources/` do seu projeto.
+
+    *   **`src/main/resources/messages.properties` (para o idioma padrão, ex: Inglês):**
+        ```properties
+        rest-validation.validation-failed=Validation error detected.
+        rest-validation.type-mismatch=The parameter '{0}' received an invalid value: '{1}'.
+        rest-validation.not-found=Resource not found.
+        rest-validation.internal-error=An critical internal error occurred.
+        ```
+
+    *   **`src/main/resources/messages_pt_BR.properties` (para Português do Brasil):**
+        ```properties
+        rest-validation.validation-failed=Erro de validação detectado.
+        rest-validation.type-mismatch=O parâmetro '{0}' recebeu um valor inválido: '{1}'.
+        rest-validation.not-found=Recurso não localizado.
+        rest-validation.internal-error=Ocorreu um erro interno crítico.
+        ```
+
+2.  **Envie o cabeçalho `Accept-Language` na requisição:**
+    O cliente da API deve enviar o cabeçalho `Accept-Language` com o `Locale` desejado.
+
+    *   **Exemplo de requisição para Português do Brasil:**
+        ```
+        GET /api/users
+        Accept-Language: pt-BR
+        ```
+
+    *   **Exemplo de requisição para Inglês:**
+        ```
+        GET /api/users
+        Accept-Language: en
+        ```
+
+**Exemplo de Resposta com i18n (para `pt-BR`):**
+
+Se a requisição for feita com `Accept-Language: pt-BR` e houver um erro de validação:
+
+```json
+{
+  "timestamp": "2023-10-27T10:30:00.123456789Z",
+  "message": "Erro de validação detectado.",
+  "errors": [
+    {
+      "field": "name",
+      "message": "Nome obrigatório"
+    },
+    {
+      "field": "email",
+      "message": "E-mail inválido"
+    }
+  ]
+}
+```
+*(Note que as mensagens dos campos individuais (`name`, `email`) vêm das anotações `@NotBlank(message="Nome obrigatório")`, e também podem ser internacionalizadas usando chaves de mensagens em `messages.properties` se você não quiser hardcodar a mensagem diretamente na anotação.)*
 
 ---
 
